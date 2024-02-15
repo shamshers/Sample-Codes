@@ -1,0 +1,28 @@
+import groovy.json.JsonSlurper
+
+// Get the response content
+def responseContent = testRunner.testCase.getTestStepByName("YourSOAPRequestStep").getPropertyValue("Response")
+
+// Parse the response content
+def jsonResponse = new JsonSlurper().parseText(responseContent)
+
+// Define the node name you want to count
+def nodeName = "node_name" // Replace with your node name
+
+// Count the occurrences of the node
+def nodeCount = 0
+jsonResponse.each { key, value ->
+    if (key == nodeName) {
+        nodeCount++
+    } else if (value instanceof Map || value instanceof List) {
+        nodeCount += countNodeOccurrences(value, nodeName)
+    }
+}
+
+// Define the expected count for the node
+def expectedNodeCount = 5 // Set your expected count here
+
+// Assert the node count
+assert nodeCount == expectedNodeCount : "Expected $expectedNodeCount occurrences of '$nodeName', but found $nodeCount"
+
+log.info("Number of occurrences of '$nodeName' in the response: $nodeCount")
