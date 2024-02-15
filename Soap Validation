@@ -1,1 +1,18 @@
 
+import com.eviware.soapui.model.testsuite.TestCase
+
+// Get the test case and its response
+def testCase = context.testCase
+def response = testCase.testSteps['YourSOAPRequestStep'].testRequest.response
+
+// Parse the response and extract the name field
+def responseContent = response.contentAsString
+def name = new XmlSlurper().parseText(responseContent).'**'.find { it.name() == 'name' }.text()
+
+// Compare the name with an expected value
+def expectedName = 'Expected Name'
+if (name == expectedName) {
+    log.info("Name in the response matches the expected name: $name")
+} else {
+    log.error("Name in the response ('$name') does not match the expected name ('$expectedName')")
+}
