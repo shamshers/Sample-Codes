@@ -1,0 +1,24 @@
+import com.eviware.soapui.support.XmlHolder
+
+// Your SOAP response XML
+def response = '''
+<response>
+    <values>
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+    </values>
+</response>
+'''
+
+// Define the expected array of values
+def expectedArray = [1, 2, 3]
+
+// Parse the SOAP response
+def holder = new XmlHolder(response)
+
+// Extract the array of node values
+def actualArray = holder.getNodeValues("//value")
+
+// Assert that the arrays match
+assert actualArray == expectedArray : "Arrays do not match: Expected $expectedArray but found $actualArray"
