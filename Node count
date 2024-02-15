@@ -1,1 +1,11 @@
 
+def xmlData = new XmlSlurper().parseText(xml)
+
+// Count the integrations
+def integrationCount = xmlData.Body.listIntegrationsResponse.return.integrations.size()
+
+// Expected integration count
+def expectedIntegrationCount = 10
+
+// Assertion
+assert integrationCount == expectedIntegrationCount : "Integration count is not equal to $expectedIntegrationCount"
