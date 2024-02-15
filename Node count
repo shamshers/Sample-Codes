@@ -1,28 +1,155 @@
-import groovy.json.JsonSlurper
-
-// Get the response content
-def responseContent = testRunner.testCase.getTestStepByName("YourSOAPRequestStep").getPropertyValue("Response")
-
-// Parse the response content
-def jsonResponse = new JsonSlurper().parseText(responseContent)
-
-// Define the node name you want to count
-def nodeName = "node_name" // Replace with your node name
-
-// Count the occurrences of the node
-def nodeCount = 0
-jsonResponse.each { key, value ->
-    if (key == nodeName) {
-        nodeCount++
-    } else if (value instanceof Map || value instanceof List) {
-        nodeCount += countNodeOccurrences(value, nodeName)
-    }
-}
-
-// Define the expected count for the node
-def expectedNodeCount = 5 // Set your expected count here
-
-// Assert the node count
-assert nodeCount == expectedNodeCount : "Expected $expectedNodeCount occurrences of '$nodeName', but found $nodeCount"
-
-log.info("Number of occurrences of '$nodeName' in the response: $nodeCount")
+<soapenv:Envelope xmlns:soapenv="http://www.w3.org/2003/05/soap-envelope">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <ns:listIntegrationsResponse xmlns:ns="http://client.integration.webservice.liss.co.uk">
+         <ns:return xsi:type="ax263:ListIntegrationsResponse" xmlns:ax263="http://client.integration.webservice.liss.co.uk/xsd" xmlns:ax264="http://request.core.webservice.liss.co.uk/xsd" xmlns:ax265="http://domain.core.webservice.liss.co.uk/xsd" xmlns:ax269="http://response.core.webservice.liss.co.uk/xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+            <ax269:validationErrors xsi:nil="true"/>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>1</ax263:id>
+               <ax263:name>SOAPDOCSIGN</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>2</ax263:id>
+               <ax263:name>SOAPDOCSIGNbyID</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>3</ax263:id>
+               <ax263:name>RESTDOCSIGN</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>4</ax263:id>
+               <ax263:name>SOAPDOCSIGNWORKFLOW</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>5</ax263:id>
+               <ax263:name>RESTGETMOCK</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>6</ax263:id>
+               <ax263:name>RESTDOCSIGNPOSTJSON</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>7</ax263:id>
+               <ax263:name>PARENTSOAPDOCSIGN</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>8</ax263:id>
+               <ax263:name>CHILD1SOAPDOCSIGN</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>9</ax263:id>
+               <ax263:name>PARENTRESTDOCSIGN</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>10</ax263:id>
+               <ax263:name>CHILD1RESTDOCSIGN</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>11</ax263:id>
+               <ax263:name>PARENTRESTPOSTJSON</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>12</ax263:id>
+               <ax263:name>CHILD2RESTPOSTJSON</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>13</ax263:id>
+               <ax263:name>PARENTRESTPOSTJSONQUESTIONSVALUE</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>1002</ax263:id>
+               <ax263:name>TESTICFROMWF</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>1003</ax263:id>
+               <ax263:name>MULTIPLEANSWERS</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>1004</ax263:id>
+               <ax263:name>LIFEPRO_NEW_BUSINESS</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>1005</ax263:id>
+               <ax263:name>RESTDOCSIGNPOSTJSON_CHILD_SCORE</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>1006</ax263:id>
+               <ax263:name>RESTDOCSIGNPOSTJSON_WORKFLOW</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>1007</ax263:id>
+               <ax263:name>SOAPDOCSIGN_CHILD_QUESTION</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>1008</ax263:id>
+               <ax263:name>IC_TEST</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>1009</ax263:id>
+               <ax263:name>CUSTOM_ERROR</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>1010</ax263:id>
+               <ax263:name>GROOVY_ERROR</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>1011</ax263:id>
+               <ax263:name>MULTIPLEANSWERS_CLONE</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>1012</ax263:id>
+               <ax263:name>MULTIPLEANSWERS_INVALID_VALUE</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>1013</ax263:id>
+               <ax263:name>MULTIPLEANSWERS_INVALID_XML</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>1014</ax263:id>
+               <ax263:name>REST_HUMAN_1</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>1015</ax263:id>
+               <ax263:name>REST_HUMAN_ERR</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType/>
+               <ax263:id>1016</ax263:id>
+               <ax263:name>MULTIPLEANSWERS_CLONE_OLD</ax263:name>
+            </ax263:integrations>
+            <ax263:integrations xsi:type="ax263:Integration">
+               <ax263:contentType>application/json</ax263:contentType>
+               <ax263:id>1017</ax263:id>
+               <ax263:name>RESTDOCSIGNPOSTJSON_FORMIO_WORKFLOW</ax263:name>
+            </ax263:integrations>
+         </ns:return>
+      </ns:listIntegrationsResponse>
+   </soapenv:Body>
+</soapenv:Envelope>
