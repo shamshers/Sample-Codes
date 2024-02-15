@@ -1,0 +1,17 @@
+// Get the Properties test step
+def propertiesTestStep = testRunner.testCase.getTestStepByName("YourPropertiesTestStepName")
+
+// Check if the Properties test step exists
+if (propertiesTestStep != null && propertiesTestStep instanceof com.eviware.soapui.impl.wsdl.teststeps.PropertyTransfersTestStep) {
+    // Get the property value
+    def propertyValue = propertiesTestStep.getPropertyValue("YourPropertyName")
+    
+    // Check if the property value is not null
+    if (propertyValue != null) {
+        log.info("Property Value: $propertyValue")
+    } else {
+        log.error("Property Value is null or not found.")
+    }
+} else {
+    log.error("Properties Test Step not found.")
+}
