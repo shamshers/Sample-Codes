@@ -1,0 +1,13 @@
+Using SoapUI for API load testing instead of ReadyAPI might present a few challenges:
+
+1. **Limited Features**: SoapUI, while capable of conducting API functional testing, may lack some advanced features specifically designed for load testing that are available in ReadyAPI.
+
+2. **Scalability**: ReadyAPI is designed with scalability in mind, making it more suitable for handling large-scale load tests involving hundreds or thousands of virtual users. SoapUI may not be as efficient in managing such high loads.
+
+3. **Performance**: ReadyAPI is optimized for performance testing, offering features like distributed load testing and real-time performance monitoring, which SoapUI may not provide or may have limited functionality in.
+
+4. **Ease of Use**: ReadyAPI typically offers a more user-friendly interface and streamlined workflows for setting up and running load tests compared to SoapUI, which may requi more manual configuration and scripting.
+
+5. **Reporting**: ReadyAPI often provides more comprehensive and customizable reporting options for load test results, allowing for better analysis and interpretation of performance metrics compared to SoapUI.
+
+Overall, while it's possible to perform API load testing using SoapUI, using ReadyAPI may offer a more robust and efficient solution, especially for complex or high-volume load testing scenarios.
