@@ -1,1 +1,19 @@
 <data contentType="null" contentLength="89"><![CDATA[{"response":{"ruleOutputs":[{"status":"SUCCESS","assignments":[],"ruleName":"Alcohol"}]}}]]></data>
+
+import groovy.json.JsonSlurper
+
+// Extract XML response
+def response = """
+<data contentType="null" contentLength="89"><![CDATA[{"response":{"ruleOutputs":[{"status":"SUCCESS","assignments":[],"ruleName":"Alcohol"}]}}]]></data>
+"""
+
+// Parse XML and extract JSON content
+def xml = new XmlSlurper().parseText(response)
+def jsonContent = xml.text()
+
+// Parse JSON content
+def jsonSlurper = new JsonSlurper()
+def json = jsonSlurper.parseText(jsonContent)
+
+// Accessing JSON data
+println(json)
